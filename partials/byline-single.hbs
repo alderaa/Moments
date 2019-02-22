@@ -1,0 +1,27 @@
+{{!-- Everything inside the #author tags pulls data from the author --}}
+{{#primary_author}}
+<div class="col s12">
+    <div class="card small blue-grey darken-1 horizontal" >
+        <div class="card-image">
+        {{#if profile_image}}
+            <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
+        {{else}}
+            <span class="avatar-wrapper">{{> "icons/avatar"}}</span>
+        {{/if}}
+        </div>
+        <div class="card-stacked">
+            <div class="card-content white-text">
+                <span class="card-title">
+                    <a class="white-text" href="{{url}}">{{name}}</a>
+                </span>
+                {{#if bio}}
+                <p class="flow-text">{{bio}}</p>
+                {{/if}}
+            </div>
+            <div class="card-action">
+                <a href="{{url}}">Read more</a>
+            </div>
+        </div>
+    </div>
+</div>
+{{/primary_author}}

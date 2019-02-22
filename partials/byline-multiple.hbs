@@ -1,0 +1,19 @@
+<h5>This post was a collaboration between</h5>
+
+{{#foreach authors}}
+<a href="{{url}}" id="{{id}}">
+    <div class="chip">
+        <img src="{{img_url profile_image size="xs"}}" alt="{{name}}">
+        {{name}}
+    </div>
+</a>
+{{/foreach}}
+
+{{#contentFor "scripts"}}
+<script>
+    $(document).ready(function () {
+        $('.collapsible').collapsible();
+    });
+
+</script>
+{{/contentFor}}

@@ -1,0 +1,61 @@
+<nav>
+    <div class="nav-wrapper container">
+        <a href="#" data-target="mobile" class="sidenav-trigger right hide-on-med-and-up"><i class="fas fa-bars"></i></a>
+        <ul id="nav-mobile" class="left">
+            {{^is "home"}}
+            <li>
+                {{#if @site.logo}}
+                    <a href="{{@site.url}}"><img class="site-nav-logo" src="{{@site.logo}}" alt="{{@site.title}}" /></a>
+                {{else}}
+                    <a href="{{@site.url}}">{{@site.title}}</a>
+                {{/if}}
+            </li>
+            {{/is}}
+            {{#if @site.navigation}}
+                {{navigation}}
+            {{/if}}
+        </ul>
+        <ul id="left-nav" class="right hide-on-small-and-down">
+            {{#if @site.facebook}}
+                <li><a href="{{facebook_url @site.facebook}}" title="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a></li>
+            {{/if}}
+            {{#if @site.twitter}}
+                <li><a href="{{twitter_url @site.twitter}}" title="Twitter" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a></li>
+            {{/if}}
+            {{#if @labs.subscribers}}
+                <li><a class="btn white black-text" href="/subscribe">Subscribe</a></li>
+            {{else}}
+               <li><a href="https://feedly.com/i/subscription/feed/{{@site.url}}/rss/" title="RSS" target="_blank" rel="noopener"><i class="fas fa-rss"></i></a></li>
+            {{/if}}
+        </ul>
+    </div>
+</nav>
+<ul class="sidenav" id="mobile">
+    <li><a class="subheader">Social</a></li>
+    {{#if @site.facebook}}
+        <li><a href="{{facebook_url @site.facebook}}" title="Facebook" target="_blank" rel="noopener">
+            <i class="fab fa-facebook-f"></i><span class="left">Facebook</span></a>
+        </li>
+    {{/if}}
+    {{#if @site.twitter}}
+        <li><a href="{{twitter_url @site.twitter}}" title="Twitter" target="_blank" rel="noopener">
+            <i class="fab fa-twitter"></i><span class="left">Twitter</span></a>
+        </li>
+    {{/if}}
+    {{#if @labs.subscribers}}
+        <li><a class="btn white black-text" href="/subscribe">Subscribe</a></li>
+    {{else}}
+        <li><a class="rss-button" href="https://feedly.com/i/subscription/feed/{{@site.url}}/rss/" title="RSS" target="_blank" rel="noopener">
+            <i class="fas fa-rss"></i><span class="left">RSS</span></a>
+        </li>
+    {{/if}}
+</ul>
+
+{{#contentFor "scripts"}}
+<script>
+    $(document).ready(function () {
+        $('.sidenav').sidenav({edge: 'right'});
+    });
+ 
+</script>
+{{/contentFor}}

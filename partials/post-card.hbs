@@ -1,0 +1,48 @@
+<div class="post-card col l4 m6 s12 {{post_class}} {{#unless feature_image}}no-image{{else}}{{#is "home"}}{{#has index="nth:6"}}post-card-large{{/has}}{{/is}}{{/unless}}">
+    <div class="card large">
+        {{#if feature_image}}
+        <div class="card-image">
+            <a href="{{url}}">
+                {{!-- This is a responsive image, it loads different sizes depending on device
+                https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
+                <img
+                    srcset="{{img_url feature_image size="s"}} 300w,
+                            {{img_url feature_image size="m"}} 600w,
+                            {{img_url feature_image size="l"}} 1000w,
+                            {{img_url feature_image size="xl"}} 2000w"
+                    sizes="(max-width: 1000px) 400px, 700px"
+                    src="{{img_url feature_image size="m"}}"
+                    alt="{{title}}"
+                />
+            </a>
+        </div>
+        {{/if}}
+
+        <div class="card-content">
+
+            <a href="{{url}}">
+                {{#if primary_tag}}
+                    <span class="post-card-tags">{{primary_tag.name}}</span>
+                {{/if}}
+                <h5 class="post-card-title grey-text text-darken-4 bold">{{title}}</h5>
+                <p class="grey-text text-darken-4">{{excerpt words="33"}}</p>
+            </a>
+
+            <div class="card-action">
+                <p class="left" style="margin:0">
+                    {{#foreach authors}}
+                        {{#if profile_image}}
+                            <a href="{{url}}" class="static-avatar tooltipped left" style="margin-right:5px" data-position="top" data-tooltip="{{name}}"><img
+                                    class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" /></a>
+                            {{else}}
+                            <a href="{{url}}" class="static-avatar tooltipped author-profile-image">{{> "icons/avatar"}}</a>
+                        {{/if}}
+                    {{/foreach}}
+
+                    <p class="reading-time grey-text text-darken-4 right">{{reading_time}}</p>
+                </p>
+            </div>
+        </div>
+    </div>{{!--/.post-card-content--}}
+
+</div>
